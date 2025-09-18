@@ -58,6 +58,43 @@
           <Label col="0" text="&#xf0ad;" class="nt-icon fas"></Label>
           <Label col="1" text="Funcionalidad" class="p-r-10"></Label>
         </GridLayout>
+
+        <GridLayout
+          columns="auto, *"
+          class="nt-drawer__list-item"
+          [class.-selected]="isComponentSelected('/compartir-texto')"
+          (tap)="onNavItemTap('/compartir-texto')"
+        >
+          <Label col="0" text="&#xf1d8;" class="nt-icon fas"></Label>
+          <Label col="1" text="Compartir texto" class="p-r-10"></Label>
+        </GridLayout>
+        <GridLayout
+          columns="auto, *"
+          class="nt-drawer__list-item"
+          [class.-selected]="isComponentSelected('/compartir-imagen')"
+          (tap)="onNavItemTap('/compartir-imagen')"
+        >
+          <Label col="0" text="&#xf03e;" class="nt-icon fas"></Label>
+          <Label col="1" text="Compartir imagen" class="p-r-10"></Label>
+        </GridLayout>
+        <GridLayout
+          columns="auto, *"
+          class="nt-drawer__list-item"
+          [class.-selected]="isComponentSelected('/compartir-camara')"
+          (tap)="onNavItemTap('/compartir-camara')"
+        >
+          <Label col="0" text="&#xf030;" class="nt-icon fas"></Label>
+          <Label col="1" text="Compartir cámara" class="p-r-10"></Label>
+        </GridLayout>
+        <GridLayout
+          columns="auto, *"
+          class="nt-drawer__list-item"
+          [class.-selected]="isComponentSelected('/mapa')"
+          (tap)="onNavItemTap('/mapa')"
+        >
+          <Label col="0" text="&#xf279;" class="nt-icon fas"></Label>
+          <Label col="1" text="Mapa" class="p-r-10"></Label>
+        </GridLayout>
         <StackLayout class="hr"></StackLayout>
 
         <GridLayout
@@ -75,5 +112,6 @@
 
   <GridLayout tkMainContent>
     <page-router-outlet></page-router-outlet>
+    <app-toast-global></app-toast-global>
   </GridLayout>
 </RadSideDrawer>

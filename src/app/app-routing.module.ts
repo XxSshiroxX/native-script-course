@@ -37,6 +37,14 @@ const routes: Routes = [
     path: 'favoritos',
     loadChildren: () => import('~/app/favoritos/favoritos.module').then((m) => m.FavoritosModule),
   },
+  {
+    path: 'compartir',
+    loadChildren: () => import('~/app/compartir/compartir.module').then((m) => m.CompartirModule),
+  },
+  {
+    path: 'mapa',
+    loadChildren: () => import('~/app/mapa/mapa.module').then((m) => m.MapaModule),
+  },
 ];
 
 @NgModule({

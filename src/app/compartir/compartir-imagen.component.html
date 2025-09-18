@@ -1,0 +1,6 @@
+<StackLayout>
+  <Label text="Compartir imagen:"></Label>
+  <Button text="Cargar imagen demo" (tap)="cargarImagenDemo()"></Button>
+  <Image *ngIf="imagen" [src]="imagen"></Image>
+  <Button *ngIf="imagen" text="Compartir imagen" (tap)="compartir()"></Button>
+</StackLayout>

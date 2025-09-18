@@ -1,0 +1,6 @@
+<StackLayout>
+  <Label text="Tomar foto y compartir:"></Label>
+  <Button text="Tomar foto" (tap)="tomarFoto()"></Button>
+  <Image *ngIf="imagen" [src]="imagen"></Image>
+  <Button *ngIf="imagen" text="Compartir foto" (tap)="compartir()"></Button>
+</StackLayout>
