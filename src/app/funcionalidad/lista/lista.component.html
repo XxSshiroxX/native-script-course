@@ -3,7 +3,10 @@
   <Label text="Lista de elementos:"></Label>
   <ListView [items]="items">
     <ng-template let-item="item">
-      <Label [text]="item"></Label>
+      <StackLayout (tap)="irADetalle(item)">
+        <Label [text]="item.nombre"></Label>
+        <Label [text]="item.categoria"></Label>
+      </StackLayout>
     </ng-template>
   </ListView>
 </StackLayout>

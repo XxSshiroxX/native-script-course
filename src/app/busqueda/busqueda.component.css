@@ -1,0 +1,9 @@
+Label { color: blue; }
+FlexboxLayout { margin: 8 0; }
+.input { margin: 8 0; border-width: 1; border-color: #aaa; padding: 4; }
+.error { color: red; }
+.animar { animation-name: rotar; animation-duration: 1s; animation-iteration-count: 1; }
+@keyframes rotar {
+	from { transform: rotate(0deg); }
+	to { transform: rotate(360deg); }
+}

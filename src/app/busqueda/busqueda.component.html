@@ -1,0 +1,23 @@
+<StackLayout>
+  <TextField [(ngModel)]="busqueda" minLengthCustom="3" hint="Buscar..." class="input"></TextField>
+  <Button text="Buscar" (tap)="onSubmit()"></Button>
+  <Label *ngIf="error" [text]="error" class="error"></Label>
+  <Label text="Resultados de búsqueda:"></Label>
+  <PullToRefresh (refresh)="onPullRefresh($event)">
+    <ListView [items]="resultados">
+      <ng-template let-item="item">
+        <FlexboxLayout flexDirection="row" alignItems="center">
+          <Image [src]="item.icono" width="32" height="32"
+            [class.animar]="animando"
+            (longPress)="onLongPress(item)">
+          </Image>
+          <Label [text]="item.nombre" class="m-l-10"></Label>
+          <Label [text]="item.categoria" class="m-l-10"></Label>
+          <Button text="Cambiar categoría" (tap)="cambiarCategoria(item)"></Button>
+          <Button text="Detalle" (tap)="irADetalle(item)"></Button>
+        </FlexboxLayout>
+      </ng-template>
+    </ListView>
+  </PullToRefresh>
+  <app-toast [message]="toastMsg" [visible]="toastVisible"></app-toast>
+</StackLayout>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RouterExtensions } from '@nativescript/angular';
 import { isAndroid } from '@nativescript/core';
 
 @Component({
@@ -7,14 +8,24 @@ import { isAndroid } from '@nativescript/core';
   styleUrls: ['./lista.component.css', './lista.component.android.css', './lista.component.ios.css']
 })
 export class ListaComponent implements OnInit {
-  items = ['Elemento 1', 'Elemento 2', 'Elemento 3'];
-  soloAndroid: string;
+  items = [
+    { nombre: 'Elemento 1', categoria: 'A' },
+    { nombre: 'Elemento 2', categoria: 'B' },
+    { nombre: 'Elemento 3', categoria: 'C' }
+  ];
+  soloAndroid: string = '';
+
+  constructor(private routerExtensions: RouterExtensions) {}
 
   ngOnInit() {
     if (isAndroid) {
       this.soloAndroid = '¡Esto solo se muestra en Android!';
-    } else {
-      this.soloAndroid = '';
     }
+  }
+
+  irADetalle(item: any) {
+    this.routerExtensions.navigate(['/funcionalidad/detalle'], {
+      queryParams: { nombre: item.nombre, categoria: item.categoria }
+    });
   }
 }

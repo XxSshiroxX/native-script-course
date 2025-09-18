@@ -1,6 +1,7 @@
-import { NgModule } from '@angular/core'
-import { Routes } from '@angular/router'
-import { NativeScriptRouterModule } from '@nativescript/angular'
+
+import { NgModule } from '@angular/core';
+import { Routes } from '@angular/router';
+import { NativeScriptRouterModule } from '@nativescript/angular';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -28,7 +29,11 @@ const routes: Routes = [
     path: 'funcionalidad',
     loadChildren: () => import('~/app/funcionalidad/funcionalidad.module').then((m) => m.FuncionalidadModule),
   },
-]
+  {
+    path: 'busqueda',
+    loadChildren: () => import('~/app/busqueda/busqueda.module').then((m) => m.BusquedaModule),
+  },
+];
 
 @NgModule({
   imports: [NativeScriptRouterModule.forRoot(routes)],
