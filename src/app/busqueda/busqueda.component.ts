@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { BusquedaService } from './busqueda.service';
+import { ItemsService, Item } from '../services/items.service';
 import { RouterExtensions } from '@nativescript/angular';
 import { action } from '@nativescript/core';
 
@@ -9,28 +9,32 @@ import { action } from '@nativescript/core';
   styleUrls: ['./busqueda.component.css']
 })
 export class BusquedaComponent {
-  resultados = [
-    { nombre: 'Elemento 1', categoria: 'A', icono: 'res://ic_custom_icon' },
-    { nombre: 'Elemento 2', categoria: 'B', icono: 'res://ic_custom_icon' },
-    { nombre: 'Elemento 3', categoria: 'C', icono: 'res://ic_custom_icon' }
-  ];
+  resultados: Item[] = [];
   busqueda = '';
   error = '';
   animando = false;
   toastMsg = '';
   toastVisible = false;
 
+  toggleFavorito(item: Item) {
+    this.itemsService.updateFavorito(item.id, !item.favorito).subscribe({
+      next: (updated) => {
+        item.favorito = updated.favorito;
+        this.mostrarToast(updated.favorito ? 'Marcado como favorito' : 'Eliminado de favoritos');
+      },
+      error: () => this.mostrarToast('Error al actualizar favorito'),
+    });
+  }
+
   constructor(
-    private busquedaService: BusquedaService,
+    private itemsService: ItemsService,
     private routerExtensions: RouterExtensions
-  ) {}
+  ) {
+    this.buscar();
+  }
 
   onPullRefresh(args: any) {
-    setTimeout(() => {
-      this.resultados.unshift(this.busquedaService.getRandomItem());
-      args.object.refreshing = false;
-      this.mostrarToast('¡Elemento agregado!');
-    }, 1000);
+    this.buscar(() => (args.object.refreshing = false));
   }
 
   irADetalle(item: any) {
@@ -58,12 +62,21 @@ export class BusquedaComponent {
   }
 
   onSubmit() {
-    if (!this.busqueda || this.busqueda.length < 3) {
-      this.error = 'Mínimo 3 caracteres';
-      return;
-    }
-    this.error = '';
-    this.mostrarToast('Búsqueda: ' + this.busqueda);
+    this.buscar();
+  }
+
+  buscar(callback?: () => void) {
+    this.itemsService.getItems(this.busqueda).subscribe({
+      next: (items) => {
+        this.resultados = items;
+        if (callback) callback();
+      },
+      error: () => {
+        this.resultados = [];
+        if (callback) callback();
+        this.mostrarToast('Error al buscar');
+      },
+    });
   }
 
   mostrarToast(msg: string) {

@@ -12,7 +12,8 @@
             (longPress)="onLongPress(item)">
           </Image>
           <Label [text]="item.nombre" class="m-l-10"></Label>
-          <Label [text]="item.categoria" class="m-l-10"></Label>
+          <Label [text]="item.descripcion" class="m-l-10"></Label>
+          <Button [text]="item.favorito ? '★' : '☆'" (tap)="toggleFavorito(item)"></Button>
           <Button text="Cambiar categoría" (tap)="cambiarCategoria(item)"></Button>
           <Button text="Detalle" (tap)="irADetalle(item)"></Button>
         </FlexboxLayout>

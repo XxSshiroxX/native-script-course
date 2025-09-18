@@ -1,0 +1,12 @@
+<StackLayout>
+  <Label text="Favoritos:"></Label>
+  <ListView [items]="favoritos">
+    <ng-template let-item="item">
+      <FlexboxLayout flexDirection="row" alignItems="center">
+        <Label [text]="item.nombre" class="m-l-10"></Label>
+        <Label [text]="item.descripcion" class="m-l-10"></Label>
+  <Button text="Leer ahora" (tap)="leerAhora(item)"></Button>
+      </FlexboxLayout>
+    </ng-template>
+  </ListView>
+</StackLayout>

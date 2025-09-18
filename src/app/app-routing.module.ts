@@ -33,6 +33,10 @@ const routes: Routes = [
     path: 'busqueda',
     loadChildren: () => import('~/app/busqueda/busqueda.module').then((m) => m.BusquedaModule),
   },
+  {
+    path: 'favoritos',
+    loadChildren: () => import('~/app/favoritos/favoritos.module').then((m) => m.FavoritosModule),
+  },
 ];
 
 @NgModule({

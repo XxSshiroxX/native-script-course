@@ -9,5 +9,13 @@
 
 <GridLayout class="page__content">
   <Label class="page__content-icon fas" text="&#xf015;"></Label>
-  <Label class="page__content-placeholder" text="<!-- Page content goes here -->"></Label>
+  <Label text="Leídos ahora:"></Label>
+  <ListView [items]="leidos$ | async">
+    <ng-template let-item="item">
+      <StackLayout>
+        <Label [text]="item.nombre"></Label>
+        <Label [text]="item.descripcion"></Label>
+      </StackLayout>
+    </ng-template>
+  </ListView>
 </GridLayout>
