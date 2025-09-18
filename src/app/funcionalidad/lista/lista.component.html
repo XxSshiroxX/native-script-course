@@ -1,0 +1,9 @@
+<StackLayout>
+  <Label *ngIf="soloAndroid" [text]="soloAndroid"></Label>
+  <Label text="Lista de elementos:"></Label>
+  <ListView [items]="items">
+    <ng-template let-item="item">
+      <Label [text]="item"></Label>
+    </ng-template>
+  </ListView>
+</StackLayout>

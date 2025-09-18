@@ -1,0 +1,58 @@
+# Dependencias
+/node_modules/
+/platforms/
+/hooks/
+/plugins/
+
+# Archivos generados por TypeScript
+*.js
+*.js.map
+*.d.ts
+
+# Angular & NativeScript
+/dist/
+/out-tsc/
+/coverage/
+/report/
+/www/
+/src/**/*.js
+/src/**/*.js.map
+/src/**/*.d.ts
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
+
+# IDEs y configuración local
+.vscode/
+.idea/
+*.iml
+
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db
+.AppleDouble
+.LSOverride
+
+# Archivos temporales
+/tmp
+/cache
+/.cache
+tmp/
+typings/
+.cloud
+.project
+
+# Variables de entorno y configuraciones locales
+*.local
+*.env
+*.env.*
+
+# Visual Studio Code (mantener configuraciones compartidas)
+/.vscode/*
+!/.vscode/settings.json
+!/.vscode/tasks.json
+!/.vscode/launch.json
+!/.vscode/extensions.json
